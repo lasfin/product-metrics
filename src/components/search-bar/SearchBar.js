@@ -27,7 +27,10 @@ class SearchBar extends React.Component {
                     hintText="Type event name, category or label"
                     dataSource={this.state.dataSource}
                     onUpdateInput={this.handleUpdateInput}
-                    maxSearchResults="5"
+                    maxSearchResults={5}
+                    style={{
+                        marginTop: '5px'
+                    }}
                 />
             </div>
     );
