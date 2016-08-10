@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import SearchBar from  './components/search-bar/SearchBar';
-import Header from './components/header/Header';
-import TableEvents from './components/table-events/TableEvents';
-import Footer from './components/footer/Footer';
+import SearchBar from  './search-bar/SearchBar';
+import Header from './header/Header';
+import TableEvents from './table-events/TableEvents';
+import Footer from './footer/Footer';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import './App.css';
 
