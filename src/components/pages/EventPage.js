@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Header from './header/Header';
-import Footer from './footer/Footer';
 // eslint-disable-next-line
 import Highcharts from 'highcharts';
 import ReactHighcharts from 'react-highcharts';
@@ -62,12 +60,8 @@ const highchartsConfig = {
 class EventPage extends Component {
     render() {
         return (
-            <div className="App">
-                <Header/>
-                <div className="charts-container">
-                    <ReactHighcharts config={highchartsConfig}></ReactHighcharts>
-                </div>
-                <Footer/>
+            <div className="charts-container">
+                <ReactHighcharts config={highchartsConfig}></ReactHighcharts>
             </div>
         );
     }
