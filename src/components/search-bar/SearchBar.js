@@ -1,36 +1,24 @@
 import React from 'react';
-import AutoComplete from 'material-ui/AutoComplete';
+import TextField from 'material-ui/TextField';
 
 class SearchBar extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
-            dataSource: [], // todo
+            query: '', // todo
         };
     }
 
-    handleUpdateInput = (value) => {
-        this.setState({
-            dataSource: [
-                value
-            ],
-        });
-    };
+    handleUpdateInput = (value) => {};
 
 
     render() {
         return (
             <div>
-                <AutoComplete
-                    hintText="Type event name, category or label"
-                    dataSource={this.state.dataSource}
-                    onUpdateInput={this.handleUpdateInput}
-                    maxSearchResults={5}
-                    style={{
-                        marginTop: '5px'
-                    }}
+                <TextField
+                    hintText="Start typing"
+                    floatingLabelText="Type event name, category or label"
                 />
             </div>
     );

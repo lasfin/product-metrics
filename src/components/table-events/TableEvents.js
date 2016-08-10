@@ -3,6 +3,7 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColu
 import TrendingDown from 'material-ui/svg-icons/action/trending-down';
 import TrendingUp from 'material-ui/svg-icons/action/trending-up';
 import TrendingFlat from 'material-ui/svg-icons/action/trending-flat';
+import {Link} from 'react-router';
 
 class TableEvents extends React.Component {
 
@@ -44,7 +45,7 @@ class TableEvents extends React.Component {
                         <TableRowColumn>Employed</TableRowColumn>
                         <TableRowColumn>100</TableRowColumn>
                         <TableRowColumn>85</TableRowColumn>
-                        <TableRowColumn><TrendingDown/></TableRowColumn>
+                        <TableRowColumn><Link to={'/details/1'}><TrendingDown/></Link></TableRowColumn>
                     </TableRow>
                     <TableRow>
                         <TableRowColumn>2</TableRowColumn>
