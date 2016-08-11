@@ -32,7 +32,7 @@ class TableEvents extends React.Component {
                         <TableHeaderColumn tooltip="Label">Label</TableHeaderColumn>
                         <TableHeaderColumn tooltip="Label">20.08</TableHeaderColumn>
                         <TableHeaderColumn tooltip="Label">21.08</TableHeaderColumn>
-                        <TableHeaderColumn tooltip="Label">Trend</TableHeaderColumn>
+                        <TableHeaderColumn>Trend</TableHeaderColumn>
                     </TableRow>
                 </TableHeader>
                 <TableBody

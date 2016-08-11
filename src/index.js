@@ -6,8 +6,12 @@ import configureStore from './store/configureStore';
 import routes from './routes';
 import './index.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {loadEventsSuccess} from './actions/eventsActions';
+import mockData from './mock-data';
 
 const store = configureStore();
+store.dispatch(loadEventsSuccess(mockData));
+
 
 ReactDOM.render(
     <MuiThemeProvider>
