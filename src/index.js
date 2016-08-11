@@ -8,7 +8,10 @@ import './index.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {loadEventsSuccess} from './actions/eventsActions';
 import mockData from './mock-data';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
+
+injectTapEventPlugin(); // temporary. will go away once the official React version is released
 const store = configureStore();
 store.dispatch(loadEventsSuccess(mockData));
 
