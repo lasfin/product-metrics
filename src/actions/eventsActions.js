@@ -6,10 +6,3 @@ export function loadEventsSuccess(events = []) {
         events
     };
 }
-
-export function loadEventsFail(events = []) {
-    return {
-        type: types.LOAD_EVENTS_FAIL,
-        events: []
-    }
-}

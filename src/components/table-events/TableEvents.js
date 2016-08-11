@@ -39,30 +39,18 @@ class TableEvents extends React.Component {
                     displayRowCheckbox={this.state.showCheckboxes}
                     showRowHover={this.state.showRowHover}
                 >
-                    <TableRow>
-                        <TableRowColumn>1</TableRowColumn>
-                        <TableRowColumn>John Smith</TableRowColumn>
-                        <TableRowColumn>Employed</TableRowColumn>
-                        <TableRowColumn>100</TableRowColumn>
-                        <TableRowColumn>85</TableRowColumn>
-                        <TableRowColumn><Link to={'/details/1'}><TrendingDown/></Link></TableRowColumn>
-                    </TableRow>
-                    <TableRow>
-                        <TableRowColumn>2</TableRowColumn>
-                        <TableRowColumn>Randal White</TableRowColumn>
-                        <TableRowColumn>Unemployed</TableRowColumn>
-                        <TableRowColumn>100</TableRowColumn>
-                        <TableRowColumn>58</TableRowColumn>
-                        <TableRowColumn><TrendingFlat/></TableRowColumn>
-                    </TableRow>
-                    <TableRow>
-                        <TableRowColumn>2</TableRowColumn>
-                        <TableRowColumn>Randal White</TableRowColumn>
-                        <TableRowColumn>Unemployed</TableRowColumn>
-                        <TableRowColumn>56</TableRowColumn>
-                        <TableRowColumn>100</TableRowColumn>
-                        <TableRowColumn><TrendingUp/></TableRowColumn>
-                    </TableRow>
+                    {this.props.events.map(event =>
+                        <TableRow key={event.id}>
+                            <TableRowColumn>{event.category}</TableRowColumn>
+                            <TableRowColumn>{event.event_name}</TableRowColumn>
+                            <TableRowColumn>{event.label}</TableRowColumn>
+                            <TableRowColumn></TableRowColumn>
+                            <TableRowColumn></TableRowColumn>
+                            <TableRowColumn>
+                                <Link to={'/details/' + event.id}><TrendingDown/></Link>
+                            </TableRowColumn>
+                        </TableRow>
+                    )}
                 </TableBody>
             </Table>
         )
