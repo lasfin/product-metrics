@@ -2,69 +2,75 @@ import React, { Component } from 'react';
 // eslint-disable-next-line
 import Highcharts from 'highcharts';
 import ReactHighcharts from 'react-highcharts';
+import {connect} from 'react-redux';
 import './eventPage.css';
 
-const highchartsConfig = {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: 'Event name'
-    },
-    subtitle: {
-        text: 'Category: category, label: label'
-    },
-    xAxis: {
-        type: 'category',
-        labels: {
-            style: {
-                fontSize: '13px',
-                fontFamily: 'Verdana, sans-serif'
-            }
-        }
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Events count'
-        }
-    },
-    legend: {
-        enabled: false
-    },
-    tooltip: {
-        pointFormat: 'Events: <b>{point.y}</b>'
-    },
-    series: [{
-        name: 'Events',
-        data: [
-            ['Shanghai', 23],
-            ['Lagos', 16],
-            ['Istanbul', 14],
-            ['Karachi', 14],
-            ['Mumbai', 12],
-            ['Moscow', 12],
-            ['São Paulo', 11],
-            ['Beijing', 11],
-            ['Guangzhou', 11],
-            ['Delhi', 11],
-            ['Shenzhen', 10],
-            ['Seoul', 10],
-            ['Jakarta', 10],
-            ['Kinshasa', 9]
-        ]
-    }]
-};
 
+
+function createChartConfig(event) {
+    return {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: event.event_name
+        },
+        subtitle: {
+            text: `Category: ${event.category} Label: ${event.label}`
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Events count'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: 'Events: <b>{point.y}</b>'
+        },
+        series: [{
+            name: 'Events',
+            data: event.events_count
+        }]
+    };
+}
 
 class EventPage extends Component {
+
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            event: props.events[parseInt(props.params.id, 10)]
+        };
+
+        this.highchartsConfig = createChartConfig(this.state.event);
+    }
+
     render() {
         return (
             <div className="charts-container">
-                <ReactHighcharts config={highchartsConfig}></ReactHighcharts>
+                <ReactHighcharts config={this.highchartsConfig}></ReactHighcharts>
             </div>
         );
     }
 }
 
-export default EventPage;
+function mapStateToProps(state) {
+    return {
+        events: state.events
+    };
+}
+
+
+export default connect(mapStateToProps)(EventPage);

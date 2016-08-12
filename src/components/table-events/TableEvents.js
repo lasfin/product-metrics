@@ -30,9 +30,9 @@ class TableEvents extends React.Component {
                         <TableHeaderColumn tooltip="Category">Category</TableHeaderColumn>
                         <TableHeaderColumn tooltip="Event name">Event name</TableHeaderColumn>
                         <TableHeaderColumn tooltip="Label">Label</TableHeaderColumn>
-                        {new Array(14).fill(0).map(counter =>
-                            <TableRowColumn></TableRowColumn>
-                        )}
+                        {new Array(14).fill(0).map(function(counter, index) {
+                            return <TableRowColumn key={index}></TableRowColumn>
+                        })}
                         <TableHeaderColumn>Trend</TableHeaderColumn>
                     </TableRow>
                 </TableHeader>
@@ -45,9 +45,9 @@ class TableEvents extends React.Component {
                             <TableRowColumn>{event.category}</TableRowColumn>
                             <TableRowColumn>{event.event_name}</TableRowColumn>
                             <TableRowColumn>{event.label}</TableRowColumn>
-                            {event.events_count.map(counter =>
-                                <TableRowColumn>{counter}</TableRowColumn>
-                            )}
+                            {event.events_count.map((counter, index) => {
+                                return <TableRowColumn key={index}>{counter}</TableRowColumn>
+                            })}
                             <TableRowColumn>
                                 <Link to={'/details/' + event.id}><TrendingDown/></Link>
                             </TableRowColumn>
