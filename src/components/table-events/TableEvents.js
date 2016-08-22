@@ -27,9 +27,8 @@ class TableEvents extends React.Component {
                     adjustForCheckbox={this.state.showCheckboxes}
                 >
                     <TableRow>
-                        <TableHeaderColumn tooltip="Category">Category</TableHeaderColumn>
-                        <TableHeaderColumn tooltip="Event name">Event name</TableHeaderColumn>
-                        <TableHeaderColumn tooltip="Label">Label</TableHeaderColumn>
+                        <TableHeaderColumn style={{width: '80px'}} tooltip="Event name">Event name</TableHeaderColumn>
+                        <TableHeaderColumn style={{width: '80px'}} tooltip="Label">Label</TableHeaderColumn>
                         {new Array(14).fill(0).map(function(counter, index) {
                             return <TableRowColumn key={index}></TableRowColumn>
                         })}
@@ -42,9 +41,8 @@ class TableEvents extends React.Component {
                 >
                     {this.props.events.map(event =>
                         <TableRow key={event.id}>
-                            <TableRowColumn>{event.category}</TableRowColumn>
-                            <TableRowColumn>{event.event_name}</TableRowColumn>
-                            <TableRowColumn>{event.label}</TableRowColumn>
+                            <TableRowColumn style={{width: '80px'}}>{event.event_name}</TableRowColumn>
+                            <TableRowColumn style={{width: '80px'}}>{event.label}</TableRowColumn>
                             {event.events_count.map((counter, index) => {
                                 return <TableRowColumn key={index}>{counter}</TableRowColumn>
                             })}

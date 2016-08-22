@@ -50,8 +50,9 @@ class EventPage extends Component {
 
     constructor(props, context) {
         super(props, context);
+
         this.state = {
-            event: props.events[parseInt(props.params.id, 10)]
+            event: props.events.find(event => event.id === parseInt(props.params.id, 10))
         };
 
         this.highchartsConfig = createChartConfig(this.state.event);
