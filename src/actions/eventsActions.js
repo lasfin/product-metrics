@@ -6,3 +6,10 @@ export function loadEventsSuccess(events = []) {
         events
     };
 }
+
+export function searchEvents(query) {
+    return {
+        type: types.SEARCH_EVENTS,
+        query
+    }
+}
