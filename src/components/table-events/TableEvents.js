@@ -41,9 +41,9 @@ class TableEvents extends React.Component {
                 >
                     {this.props.events.map(event =>
                         <TableRow key={event.id}>
-                            <TableRowColumn style={{width: '80px'}}>{event.event_name}</TableRowColumn>
+                            <TableRowColumn style={{width: '80px'}}>{event.name}</TableRowColumn>
                             <TableRowColumn style={{width: '80px'}}>{event.label}</TableRowColumn>
-                            {event.events_count.map((counter, index) => {
+                            {event.count.map((counter, index) => {
                                 return <TableRowColumn key={index}>{counter}</TableRowColumn>
                             })}
                             <TableRowColumn>

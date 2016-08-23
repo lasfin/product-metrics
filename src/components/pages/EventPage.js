@@ -13,7 +13,7 @@ function createChartConfig(event) {
             type: 'column'
         },
         title: {
-            text: event.event_name
+            text: event.name
         },
         subtitle: {
             text: `Category: ${event.category} Label: ${event.label}`
@@ -41,7 +41,7 @@ function createChartConfig(event) {
         },
         series: [{
             name: 'Events',
-            data: event.events_count
+            data: event.count
         }]
     };
 }

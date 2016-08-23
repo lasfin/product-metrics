@@ -6,7 +6,7 @@ const SearchBar = ({onChange}) => {
         <div>
             <TextField
                 hintText="Start typing"
-                floatingLabelText="Type event name, category or label"
+                floatingLabelText="Type event name or label"
                 onChange={onChange}
             />
         </div>
