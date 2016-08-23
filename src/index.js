@@ -6,7 +6,7 @@ import configureStore from './store/configureStore';
 import routes from './routes';
 import './index.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {loadEventsSuccess} from './actions/eventsActions';
+import {loadEventsSuccess, searchEvents} from './actions/eventsActions';
 import mockData from './mock-data';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 

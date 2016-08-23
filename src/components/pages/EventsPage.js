@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import SearchBar from  '../search-bar/SearchBar';
 import TableEvents from '../table-events/TableEvents';
+import {searchEvents} from '../../actions/eventsActions';
 import {connect} from 'react-redux';
 
 class EventsPage extends Component {
     constructor(props, context) {
         super(props, context);
-        this.state = {
-            events: props.events
-        };
+        this.onChange = this.onChange.bind(this);
+    }
+
+    onChange(event, inputValue) {
+        this.props.searchEvents(inputValue);
     }
 
     render() {
         return (
             <div className="eventPage">
-                <SearchBar/>
-                <TableEvents
-                    events={this.state.events}
-                />
+                <SearchBar onChange={this.onChange}/>
+                <TableEvents events={this.props.events}/>
             </div>
         );
     }
@@ -26,9 +27,15 @@ class EventsPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        events: state.events
+        events: state.events.events,
+        query: state.events.query
     };
 }
 
-export default connect(mapStateToProps)(EventsPage);
+const mapDispatchToProps = (dispatch) => ({
+    searchEvents: query => dispatch(searchEvents(query))
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventsPage);
 

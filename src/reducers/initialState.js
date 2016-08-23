@@ -1,3 +1,6 @@
 export default {
-    events: []
+    events: {
+        events: [],
+        query: ''
+    }
 }

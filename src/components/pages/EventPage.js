@@ -69,7 +69,7 @@ class EventPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        events: state.events
+        events: state.events.events
     };
 }
 
