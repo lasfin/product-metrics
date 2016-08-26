@@ -15,10 +15,11 @@ class EventsPage extends Component {
     }
 
     render() {
+        const {filtered} = this.props;
         return (
             <div className="eventPage">
                 <SearchBar onChange={this.onChange}/>
-                <TableEvents events={this.props.list}/>
+                <TableEvents events={filtered}/>
             </div>
         );
     }
@@ -28,6 +29,7 @@ class EventsPage extends Component {
 function mapStateToProps(state) {
     return {
         list: state.events.list,
+        filtered: state.events.filtered,
         query: state.events.query
     };
 }
