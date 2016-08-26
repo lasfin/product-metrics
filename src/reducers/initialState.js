@@ -1,6 +1,6 @@
 export default {
     events: {
-        events: [],
+        list: [],
         query: ''
     }
 }

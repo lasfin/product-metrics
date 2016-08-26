@@ -18,7 +18,7 @@ class EventsPage extends Component {
         return (
             <div className="eventPage">
                 <SearchBar onChange={this.onChange}/>
-                <TableEvents events={this.props.events}/>
+                <TableEvents events={this.props.list}/>
             </div>
         );
     }
@@ -27,7 +27,7 @@ class EventsPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        events: state.events.events,
+        list: state.events.list,
         query: state.events.query
     };
 }

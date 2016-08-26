@@ -1,9 +1,9 @@
 import * as types from './actionTypes';
 
-export function loadEventsSuccess(events = []) {
+export function loadEventsSuccess(list = []) {
     return {
         type: types.LOAD_EVENTS_SUCCESS,
-        events
+        list
     };
 }
 

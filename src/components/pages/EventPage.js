@@ -52,7 +52,7 @@ class EventPage extends Component {
         super(props, context);
 
         this.state = {
-            event: props.events.find(event => event.id === parseInt(props.params.id, 10))
+            event: props.list.find(event => event.id === parseInt(props.params.id, 10))
         };
 
         this.highchartsConfig = createChartConfig(this.state.event);
@@ -69,7 +69,7 @@ class EventPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        events: state.events.events
+        list: state.events.list
     };
 }
 
