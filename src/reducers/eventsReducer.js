@@ -1,10 +1,10 @@
 import initialState from './initialState';
 import * as types from '../actions/actionTypes';
 
-export default function eventsReducer(state = initialState, action) {
+export default function eventsReducer(state = initialState.events, action) {
     switch (action.type) {
         case types.LOAD_EVENTS_SUCCESS:
-            return Object.assign(state.events, {
+            return Object.assign(state, {
                 list: action.list,
                 filtered: action.list
             });
