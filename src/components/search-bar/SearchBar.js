@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import TextField from 'material-ui/TextField';
 
 const SearchBar = ({onChange}) => {
@@ -11,6 +11,10 @@ const SearchBar = ({onChange}) => {
             />
         </div>
     );
+};
+
+SearchBar.propTypes = {
+    onChange: PropTypes.func.isRequired
 };
 
 export default SearchBar;

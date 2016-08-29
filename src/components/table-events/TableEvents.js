@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import TrendingDown from 'material-ui/svg-icons/action/trending-down';
 import TrendingUp from 'material-ui/svg-icons/action/trending-up';
@@ -55,7 +55,10 @@ class TableEvents extends React.Component {
             </Table>
         )
     }
-
 }
+
+TableEvents.propTypes = {
+    events: PropTypes.array.isRequired
+};
 
 export default TableEvents;

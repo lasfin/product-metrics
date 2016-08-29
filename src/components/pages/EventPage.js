@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 // eslint-disable-next-line
 import Highcharts from 'highcharts';
 import ReactHighcharts from 'react-highcharts';
 import {connect} from 'react-redux';
 import './eventPage.css';
-
 
 
 function createChartConfig(event) {
@@ -66,6 +65,12 @@ class EventPage extends Component {
         );
     }
 }
+
+
+EventPage.propTypes = {
+    list: PropTypes.array.isRequired
+};
+
 
 function mapStateToProps(state) {
     return {

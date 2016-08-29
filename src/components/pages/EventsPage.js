@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import SearchBar from  '../search-bar/SearchBar';
 import TableEvents from '../table-events/TableEvents';
 import {searchEvents} from '../../actions/eventsActions';
@@ -26,6 +26,13 @@ class EventsPage extends Component {
 }
 
 
+EventsPage.propTypes = {
+    list: PropTypes.array.isRequired,
+    filtered: PropTypes.array.isRequired,
+    query: PropTypes.string.isRequired,
+};
+
+
 function mapStateToProps(state) {
     return {
         list: state.events.list,
@@ -33,6 +40,7 @@ function mapStateToProps(state) {
         query: state.events.query
     };
 }
+
 
 const mapDispatchToProps = (dispatch) => ({
     searchEvents: query => dispatch(searchEvents(query))
