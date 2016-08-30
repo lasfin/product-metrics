@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import EventsPage from './components/pages/EventsPage';
-import EventPage  from './components/pages/EventPage';
+import EventsPage from './containers/EventsPage';
+import EventPage  from './containers/EventPage';
 import App from './components/App';
 
 export default (

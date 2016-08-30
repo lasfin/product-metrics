@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import SearchBar from  '../search-bar/SearchBar';
-import TableEvents from '../table-events/TableEvents';
-import {searchEvents} from '../../actions/eventsActions';
+import SearchBar from  '../components/search-bar/SearchBar';
+import TableEvents from '../components/table-events/TableEvents';
+import {searchEvents} from '../actions/eventsActions';
 import {connect} from 'react-redux';
 
 class EventsPage extends Component {
