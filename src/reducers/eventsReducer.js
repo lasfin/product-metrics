@@ -9,13 +9,22 @@ export default function eventsReducer(state = initialState.events, action) {
                 filtered: action.list
             });
         case types.SEARCH_EVENTS:
-            return Object.assign(state, {
+            // todo: why it does not work?
+            // return Object.assign(state, {
+            //     filtered: state.list.filter((event) => {
+            //         return event.name.toLowerCase().indexOf(action.query.toLowerCase()) !== -1 ||
+            //                event.label.toLowerCase().indexOf(action.query.toLowerCase())!== -1
+            //     }),
+            //     query: action.query
+            // });
+            return {
                 filtered: state.list.filter((event) => {
                     return event.name.toLowerCase().indexOf(action.query.toLowerCase()) !== -1 ||
                            event.label.toLowerCase().indexOf(action.query.toLowerCase())!== -1
                 }),
-                query: action.query
-            });
+                query: action.query,
+                list: state.list
+            };
         default:
             return state;
     }
