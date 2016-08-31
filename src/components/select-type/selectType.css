@@ -1,0 +1,8 @@
+.wrapper {
+    display: inline-block;
+    vertical-align: top
+}
+.select-field {
+    left: 15px;
+    top: 24px
+}

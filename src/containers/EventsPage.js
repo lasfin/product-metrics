@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import SearchBar from  '../components/search-bar/SearchBar';
+import SelectType from '../components/select-type/SelectType';
 import FilteredEvents from './FilteredEvents';
 import {searchEvents} from '../actions/eventsActions';
 import {connect} from 'react-redux';
@@ -19,6 +20,7 @@ class EventsPage extends Component {
         return (
             <div className="eventPage">
                 <SearchBar onChange={this.onChange}/>
+                <SelectType/>
                 <FilteredEvents/>
             </div>
         );
