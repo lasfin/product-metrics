@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import './selectType.css';
+import './selectTrend.css';
 
 const items = [
     <MenuItem key={1} value={'all'} primaryText="All" />,
@@ -10,7 +10,7 @@ const items = [
     <MenuItem key={4} value={'neutral'} primaryText="Trending Neutral" />
 ];
 
-export default class SelectFieldExampleFloatingLabel extends React.Component {
+class SelectTrend extends React.Component {
 
     constructor(props) {
         super(props);
@@ -40,3 +40,8 @@ export default class SelectFieldExampleFloatingLabel extends React.Component {
     }
 }
 
+SelectTrend.propTypes = {
+    onChange: PropTypes.func.isRequired
+};
+
+export default SelectTrend;
