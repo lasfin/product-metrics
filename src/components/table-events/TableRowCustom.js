@@ -4,6 +4,7 @@ import TrendingDown from 'material-ui/svg-icons/action/trending-down';
 import TrendingUp from 'material-ui/svg-icons/action/trending-up';
 import TrendingFlat from 'material-ui/svg-icons/action/trending-flat';
 import {Link} from 'react-router';
+import './tableRowCusrom.css';
 
 const TableRowCustom = ({event}) => {
     let trend = '';
@@ -20,15 +21,11 @@ const TableRowCustom = ({event}) => {
     }
 
     return (
-        <TableRow key={event.id}>
-            <TableRowColumn style={{width: '80px'}}>{event.name}</TableRowColumn>
-            <TableRowColumn style={{width: '80px'}}>{event.label}</TableRowColumn>
-            {event.count.map((counter, index) => {
-                return <TableRowColumn key={index}>{counter}</TableRowColumn>
-            })}
-            <TableRowColumn>
-                <Link to={'/details/' + event.id}>{trend}</Link>
-            </TableRowColumn>
+        <TableRow key={event.id} className={event.warning ? 'warning': ''}>
+            <TableRowColumn className="default_row">{event.name}</TableRowColumn>
+            <TableRowColumn className="default_row">{event.label}</TableRowColumn>
+            {event.count.map((counter, index) => { return <TableRowColumn key={index}>{counter}</TableRowColumn>})}
+            <TableRowColumn><Link to={'/details/' + event.id}>{trend}</Link></TableRowColumn>
         </TableRow>
     )
 };

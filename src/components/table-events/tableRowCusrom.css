@@ -1,0 +1,6 @@
+.default_row {
+    width: 80px;
+}
+.warning {
+    background: rgba(255, 0, 0, .05);
+}
