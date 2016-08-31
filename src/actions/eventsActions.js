@@ -10,6 +10,6 @@ export function loadEventsSuccess(list = []) {
 export function searchEvents(query) {
     return {
         type: types.SEARCH_EVENTS,
-        query
+        query: query.trim()
     }
 }

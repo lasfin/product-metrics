@@ -6,6 +6,19 @@ import TrendingFlat from 'material-ui/svg-icons/action/trending-flat';
 import {Link} from 'react-router';
 
 const TableRowCustom = ({event}) => {
+    let trend = '';
+    switch (event.trend) {
+        case 'up':
+            trend = <TrendingUp/>;
+            break;
+        case 'down':
+            trend = <TrendingDown/>;
+            break;
+        default:
+            trend = <TrendingFlat/>;
+            break;
+    }
+
     return (
         <TableRow key={event.id}>
             <TableRowColumn style={{width: '80px'}}>{event.name}</TableRowColumn>
@@ -14,7 +27,7 @@ const TableRowCustom = ({event}) => {
                 return <TableRowColumn key={index}>{counter}</TableRowColumn>
             })}
             <TableRowColumn>
-                <Link to={'/details/' + event.id}><TrendingDown/></Link>
+                <Link to={'/details/' + event.id}>{trend}</Link>
             </TableRowColumn>
         </TableRow>
     )

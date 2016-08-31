@@ -4,19 +4,12 @@ import * as types from '../actions/actionTypes';
 export default function eventsReducer(state = initialState.events, action) {
     switch (action.type) {
         case types.LOAD_EVENTS_SUCCESS:
+            var newList = action.list.map(extendEventByTrend);
             return Object.assign(state, {
-                list: action.list,
-                filtered: action.list
+                list: newList,
+                filtered: newList
             });
         case types.SEARCH_EVENTS:
-            // todo: why it does not work?
-            // return Object.assign(state, {
-            //     filtered: state.list.filter((event) => {
-            //         return event.name.toLowerCase().indexOf(action.query.toLowerCase()) !== -1 ||
-            //                event.label.toLowerCase().indexOf(action.query.toLowerCase())!== -1
-            //     }),
-            //     query: action.query
-            // });
             return {
                 filtered: state.list.filter((event) => {
                     return event.name.toLowerCase().indexOf(action.query.toLowerCase()) !== -1 ||
@@ -28,4 +21,25 @@ export default function eventsReducer(state = initialState.events, action) {
         default:
             return state;
     }
+}
+
+
+function extendEventByTrend(event) {
+    const assumption = 1.15;
+    let len = event.count.length;
+    let averageCountBegin = (event.count[0] + event.count[1] + event.count[2]) / 3;
+    let averageCountEnd = (event.count[len - 2] + event.count[len - 3] + event.count[len - 4]) / 3;
+    let change = averageCountEnd / averageCountBegin;
+
+    switch (true) {
+        case change > assumption:
+            event.trend = 'up';
+            break;
+        case change < 1 / assumption:
+            event.trend = 'down';
+            break;
+        default:
+            event.trend = 'default';
+    }
+    return event;
 }
