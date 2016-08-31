@@ -20,6 +20,7 @@ export default class SelectFieldExampleFloatingLabel extends React.Component {
 
     handleChange(event, index, value) {
         this.setState({value});
+        this.props.onChange(value);
     }
 
     render() {

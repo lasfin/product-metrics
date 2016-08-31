@@ -2,25 +2,30 @@ import React, { Component, PropTypes } from 'react';
 import SearchBar from  '../components/search-bar/SearchBar';
 import SelectType from '../components/select-type/SelectType';
 import FilteredEvents from './FilteredEvents';
-import {searchEvents} from '../actions/eventsActions';
+import {searchEvents, filterByTrend} from '../actions/eventsActions';
 import {connect} from 'react-redux';
 
 
 class EventsPage extends Component {
     constructor(props, context) {
         super(props, context);
-        this.onChange = this.onChange.bind(this);
+        this.onSearch = this.onSearch.bind(this);
+        this.onSelect = this.onSelect.bind(this);
     }
 
-    onChange(event, inputValue) {
+    onSearch(event, inputValue) {
         this.props.onSearch(inputValue);
+    }
+
+    onSelect(value) {
+        this.props.onSelect(value);
     }
 
     render() {
         return (
             <div className="eventPage">
-                <SearchBar onChange={this.onChange}/>
-                <SelectType/>
+                <SearchBar onChange={this.onSearch} />
+                <SelectType onChange={this.onSelect} />
                 <FilteredEvents/>
             </div>
         );
@@ -28,11 +33,13 @@ class EventsPage extends Component {
 }
 
 EventsPage.propTypes = {
-    onSearch: PropTypes.func.isRequired
+    onSearch: PropTypes.func.isRequired,
+    onSelect: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    onSearch: (query) => { dispatch(searchEvents(query)) }
+    onSearch: (query) => { dispatch(searchEvents(query)) },
+    onSelect: (value) => { dispatch(filterByTrend(value)) }
 });
 
 

@@ -13,3 +13,10 @@ export function searchEvents(query) {
         query: query.trim()
     }
 }
+
+export function filterByTrend(trend) {
+    return {
+        type: types.FILTER_BY_TREND,
+        trend
+    }
+}

@@ -18,6 +18,15 @@ export default function eventsReducer(state = initialState.events, action) {
                 query: action.query,
                 list: state.list
             };
+        case types.FILTER_BY_TREND:
+            return {
+                filtered: state.filtered.filter((event) => {
+                    if (action.trend === 'all') return 1;
+                    return event.trend === action.trend;
+                }),
+                query: state.query,
+                list: state.list
+            };
         default:
             return state;
     }
@@ -40,7 +49,7 @@ function extendByTrendAndWarning(event) {
             event.trend = 'down';
             break;
         default:
-            event.trend = 'default';
+            event.trend = 'neutral';
     }
 
     event.warning = change < assumptionWarning;
