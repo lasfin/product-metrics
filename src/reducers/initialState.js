@@ -2,6 +2,7 @@ export default {
     events: {
         list: [],
         filtered: [],
-        query: ''
+        query: '',
+        trend: 'all'
     }
 }

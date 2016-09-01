@@ -12,24 +12,40 @@ export default function eventsReducer(state = initialState.events, action) {
         case types.SEARCH_EVENTS:
             return {
                 filtered: state.list.filter((event) => {
-                    return event.name.toLowerCase().indexOf(action.query.toLowerCase()) !== -1 ||
-                           event.label.toLowerCase().indexOf(action.query.toLowerCase())!== -1
+                    return filterByText(event, action.query);
+                }).filter((event) => {
+                    return filterByTrend(event, state.trend);
                 }),
                 query: action.query,
-                list: state.list
+                list: state.list,
+                trend: state.trend
             };
         case types.FILTER_BY_TREND:
             return {
-                filtered: state.filtered.filter((event) => {
-                    if (action.trend === 'all') return 1;
-                    return event.trend === action.trend;
+                filtered: state.list.filter((event) => {
+                    return filterByTrend(event, action.trend);
+                }).filter((event) => {
+                    return filterByText(event, state.query);
                 }),
                 query: state.query,
-                list: state.list
+                list: state.list,
+                trend: action.trend
             };
         default:
             return state;
     }
+}
+
+
+function filterByText(event, query) {
+    return event.name.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
+           event.label.toLowerCase().indexOf(query.toLowerCase())!== -1
+}
+
+
+function filterByTrend(event, trend) {
+    if (trend === 'all' || undefined) return 1;
+    return event.trend === trend;
 }
 
 
