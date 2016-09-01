@@ -5,30 +5,29 @@ export default function eventsReducer(state = initialState.events, action) {
     switch (action.type) {
         case types.LOAD_EVENTS_SUCCESS:
             var newList = action.list.map(extendByTrendAndWarning);
-            return Object.assign(state, {
+            return {
+                ...state,
                 list: newList,
                 filtered: newList
-            });
+            };
         case types.SEARCH_EVENTS:
             return {
+                ...state,
                 filtered: state.list.filter((event) => {
                     return filterByText(event, action.query);
                 }).filter((event) => {
                     return filterByTrend(event, state.trend);
                 }),
-                query: action.query,
-                list: state.list,
-                trend: state.trend
+                query: action.query
             };
         case types.FILTER_BY_TREND:
             return {
+                ...state,
                 filtered: state.list.filter((event) => {
                     return filterByTrend(event, action.trend);
                 }).filter((event) => {
                     return filterByText(event, state.query);
                 }),
-                query: state.query,
-                list: state.list,
                 trend: action.trend
             };
         default:
