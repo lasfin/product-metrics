@@ -43,7 +43,7 @@ function filterByText(event, query) {
 
 
 function filterByTrend(event, trend) {
-    if (trend === 'all' || undefined) return 1;
+    if (trend === 'all' || !trend) return 1;
     return event.trend === trend;
 }
 
