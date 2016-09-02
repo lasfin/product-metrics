@@ -3,6 +3,6 @@ export default {
         list: [],
         filtered: [],
         query: '',
-        trend: 'all'
+        trend: null
     }
 }
