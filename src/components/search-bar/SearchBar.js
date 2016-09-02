@@ -1,12 +1,14 @@
 import React, {PropTypes} from 'react';
 import TextField from 'material-ui/TextField';
 
-const SearchBar = ({onChange}) => {
+const SearchBar = ({onChange, query}) => {
     return (
         <TextField
             hintText="Start typing"
             floatingLabelText="Type event name or label"
-            onChange={onChange}/>
+            onChange={onChange}
+            value={query}
+        />
     );
 };
 

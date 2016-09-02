@@ -24,7 +24,7 @@ class EventsPage extends Component {
     render() {
         return (
             <div className="eventPage">
-                <SearchBar onChange={this.onSearch} />
+                <SearchBar onChange={this.onSearch} query={this.props.query}/>
                 <SelectTrend onChange={this.onSelect} />
                 <FilteredEvents/>
             </div>
@@ -37,12 +37,16 @@ EventsPage.propTypes = {
     onSelect: PropTypes.func.isRequired
 };
 
+const mapStateToProps = (state) => ({
+    query: state.events.query
+});
+
 const mapDispatchToProps = (dispatch) => ({
     onSearch: (query) => { dispatch(searchEvents(query)) },
     onSelect: (value) => { dispatch(filterByTrend(value)) }
 });
 
 
-export default connect(() => {return {}}, mapDispatchToProps)(EventsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(EventsPage);
 
 
