@@ -14,7 +14,7 @@ class SelectTrend extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {value: null};
+        this.state = {value: props.trend ? props.trend: null};
         this.handleChange = this.handleChange.bind(this);
     }
 

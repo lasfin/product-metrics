@@ -25,7 +25,7 @@ class EventsPage extends Component {
         return (
             <div className="eventPage">
                 <SearchBar onChange={this.onSearch} query={this.props.query}/>
-                <SelectTrend onChange={this.onSelect} />
+                <SelectTrend onChange={this.onSelect} trend={this.props.trend}/>
                 <FilteredEvents/>
             </div>
         );
@@ -38,7 +38,8 @@ EventsPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-    query: state.events.query
+    query: state.events.query,
+    trend: state.events.trend
 });
 
 const mapDispatchToProps = (dispatch) => ({
