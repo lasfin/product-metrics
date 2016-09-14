@@ -1,6 +1,6 @@
 const credentials = {
     username: 'lasfin',
-    password: '5n,{{9S=eb'
+    password: 'pwdpwd'
 };
 
 module.exports = credentials;
