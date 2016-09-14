@@ -33,21 +33,21 @@ app.use((req, res, next) => {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use((err, req, res, next) => {
-        res.status(err.status || 500);
+    app.use((error, req, res, next) => {
+        res.status(error.status || 500);
         res.send({
-            message: err.message,
-            error: err
+            message: error.message,
+            error
         });
     });
 }
 
 // production error handler
 // no stacktraces leaked to user
-app.use((err, req, res, next) => {
-    res.status(err.status || 500);
+app.use((error, req, res, next) => {
+    res.status(error.status || 500);
     res.send({
-        message: err.message,
+        message: error.message,
         error: {}
     });
 });
