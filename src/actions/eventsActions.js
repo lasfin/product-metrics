@@ -41,6 +41,7 @@ function prepareDataAfterFetch(data) {
                 document.count.push(0);
             }
         }
+        return null;
     });
 
     return data.events;
