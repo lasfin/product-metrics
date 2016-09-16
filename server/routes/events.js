@@ -19,7 +19,10 @@ router.get('/', (req, res, next) => {
         MongoClient.connect(url, (err, db) => {
             findEventsForLastDays(db, req.query.days, (events) => {
                 db.close();
-                res.send(events);
+                res.send({
+                    events,
+                    days: req.query.days
+                });
             });
         });
     }

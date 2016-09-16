@@ -1,37 +1,145 @@
-export default [
-    {
-        id: 1,
-        category: 'Category',
-        name: 'Event One',
-        label: 'Label',
-        count: [54, 57, 51, 55, 55, 60, 51, 62, 57, 67, 69, 70, 60, 12]
-    },
-    {
-        id: 2,
-        category: 'Category',
-        name: 'Event Two',
-        label: '',
-        count: [44, 47, 54, 25, 27, 62, 55, 64, 47, 47, 49, 50, 40, 8]
-    },
-    {
-        id: 3,
-        category: 'Category',
-        name: 'Event Three',
-        label: '',
-        count: [35, 39, 31, 35, 35, 37, 21, 27, 37, 37, 39, 40, 62, 10]
-    },
-    {
-        id: 4,
-        category: 'Category',
-        name: 'Event Four',
-        label: 'Label',
-        count: [75, 74, 98, 95, 95, 66, 61, 60, 0, 0, 0, 0, 0, 0]
-    },
-    {
-        id: 5,
-        category: 'Category',
-        name: 'Event Five',
-        label: '',
-        count: [75, 74, 98, 95, 95, 66, 61, 60, 0, 0, 0, 0, 68, 70]
-    }
-];
+export default {
+    events: [
+        {
+            id: 1,
+            category: 'Category',
+            name: 'Event One',
+            label: 'Label',
+            events: [
+                {
+                    timestamp: "2016-09-11T21:00:00.000Z",
+                    count: 2
+                },
+                {
+                    timestamp: "2016-09-12T21:00:00.000Z",
+                    count: 3
+                },
+                {
+                    timestamp: "2016-09-13T21:00:00.000Z",
+                    count: 3
+                },
+                {
+                    timestamp: "2016-09-14T21:00:00.000Z",
+                    count: 3
+                },
+                {
+                    timestamp: "2016-09-15T21:00:00.000Z",
+                    count: 2
+                }
+            ]
+        },
+        {
+            id: 2,
+            category: 'Category',
+            name: 'Event Two',
+            label: '',
+            events: [
+                {
+                    timestamp: "2016-09-11T21:00:00.000Z",
+                    count: 2
+                },
+                {
+                    timestamp: "2016-09-12T21:00:00.000Z",
+                    count: 3
+                },
+                {
+                    timestamp: "2016-09-13T21:00:00.000Z",
+                    count: 3
+                },
+                {
+                    timestamp: "2016-09-14T21:00:00.000Z",
+                    count: 3
+                },
+                {
+                    timestamp: "2016-09-15T21:00:00.000Z",
+                    count: 2
+                }
+            ]
+        },
+        {
+            id: 3,
+            category: 'Category',
+            name: 'Event Three',
+            label: '',
+            events: [
+                {
+                    timestamp: "2016-09-11T21:00:00.000Z",
+                    count: 2
+                },
+                {
+                    timestamp: "2016-09-12T21:00:00.000Z",
+                    count: 3
+                },
+                {
+                    timestamp: "2016-09-13T21:00:00.000Z",
+                    count: 3
+                },
+                {
+                    timestamp: "2016-09-14T21:00:00.000Z",
+                    count: 3
+                },
+                {
+                    timestamp: "2016-09-15T21:00:00.000Z",
+                    count: 2
+                }
+            ]
+        },
+        {
+            id: 4,
+            category: 'Category',
+            name: 'Event Four',
+            label: 'Label',
+            events: [
+                {
+                    timestamp: "2016-09-11T21:00:00.000Z",
+                    count: 2
+                },
+                {
+                    timestamp: "2016-09-12T21:00:00.000Z",
+                    count: 3
+                },
+                {
+                    timestamp: "2016-09-13T21:00:00.000Z",
+                    count: 3
+                },
+                {
+                    timestamp: "2016-09-14T21:00:00.000Z",
+                    count: 3
+                },
+                {
+                    timestamp: "2016-09-15T21:00:00.000Z",
+                    count: 2
+                }
+            ]
+        },
+        {
+            id: 5,
+            category: 'Category',
+            name: 'Event Five',
+            label: '',
+            events: [
+                {
+                    timestamp: "2016-09-11T21:00:00.000Z",
+                    count: 10
+                },
+                {
+                    timestamp: "2016-09-12T21:00:00.000Z",
+                    count: 3
+                },
+                {
+                    timestamp: "2016-09-13T21:00:00.000Z",
+                    count: 5
+                },
+                {
+                    timestamp: "2016-09-14T21:00:00.000Z",
+                    count: 6
+                },
+                {
+                    timestamp: "2016-09-15T21:00:00.000Z",
+                    count: 8
+                }
+            ]
+        }
+    ],
+    days: 10
+}

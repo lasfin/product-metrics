@@ -1,9 +1,9 @@
 import * as types from './actionTypes';
 
-export function loadEventsSuccess(list = []) {
+export function loadEventsSuccess(data) {
     return {
         type: types.LOAD_EVENTS_SUCCESS,
-        list
+        list: prepareDataAfterFetch(data)
     };
 }
 
@@ -19,4 +19,29 @@ export function filterByTrend(trend) {
         type: types.FILTER_BY_TREND,
         trend
     }
+}
+
+
+function prepareDataAfterFetch(data) {
+    let days = data.days;
+    let today = new Date();
+
+    data.events.map((document) => {
+        document.count = [];
+        for (let i = 0; i < days; i++) {
+            let date = new Date(today.getFullYear(), today.getMonth(), today.getDate() - days + i); // from first to today
+
+            var existedEvent = document.events.find((event) => {
+                return new Date(event.timestamp).getTime() === date.getTime();
+            });
+
+            if (existedEvent !== undefined) {
+                document.count.push(existedEvent.count);
+            } else {
+                document.count.push(0);
+            }
+        }
+    });
+
+    return data.events;
 }
