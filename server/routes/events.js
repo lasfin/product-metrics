@@ -8,12 +8,21 @@ const url = `mongodb://${cr.username}:${cr.password}@ds021000.mlab.com:21000/met
 
 
 router.get('/', (req, res, next) => {
-    MongoClient.connect(url, (err, db) => {
-        findAllEvents(db, (events) => {
-            db.close();
-            res.send(events);
+    if (!req.query.days) {
+        MongoClient.connect(url, (err, db) => {
+            findAllEvents(db, (events) => {
+                db.close();
+                res.send(events);
+            });
         });
-    });
+    } else {
+        MongoClient.connect(url, (err, db) => {
+            findEventsForLastDays(db, req.query.days, (events) => {
+                db.close();
+                res.send(events);
+            });
+        });
+    }
 });
 
 
@@ -43,6 +52,24 @@ router.post('/', (req, res, next) => {
 
 let findAllEvents = function(db, callback) {
     db.collection('events').find({}).toArray((err, docs) => {
+        callback(docs);
+    });
+};
+
+
+let findEventsForLastDays = function(db, days, callback) {
+    db.collection('events').find({}).toArray((err, docs) => {
+        let today = new Date();
+        let dateToCompare = new Date(today.getFullYear(), today.getMonth(), today.getDate() - days);
+
+        docs.map((doc) => {
+            doc.events.map((event, index, arr) => {
+                if (event.timestamp.getTime() < dateToCompare.getTime()) {
+                    arr.splice(index, 1);
+                }
+            })
+        });
+
         callback(docs);
     });
 };
