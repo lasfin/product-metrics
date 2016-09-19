@@ -4,6 +4,8 @@ import SelectTrend from '../components/select-trend/SelectTrend';
 import FilteredEvents from './FilteredEvents';
 import {searchEvents, filterByTrend} from '../actions/eventsActions';
 import {connect} from 'react-redux';
+import CircularProgress from 'material-ui/CircularProgress';
+import './eventsPage.css';
 
 
 class EventsPage extends Component {
@@ -23,10 +25,18 @@ class EventsPage extends Component {
 
     render() {
         return (
-            <div className="eventPage">
-                <SearchBar onChange={this.onSearch} query={this.props.query}/>
-                <SelectTrend onChange={this.onSelect} trend={this.props.trend}/>
-                <FilteredEvents/>
+            <div className="eventsPage">
+            { !this.props.isFetching ?
+                <div>
+                    <SearchBar onChange={this.onSearch} query={this.props.query}/>
+                    <SelectTrend onChange={this.onSelect} trend={this.props.trend}/>
+                    <FilteredEvents/>
+                </div>
+            :
+                <div className="center-block">
+                    <CircularProgress size={2} />
+                </div>
+            }
             </div>
         );
     }
@@ -39,7 +49,8 @@ EventsPage.propTypes = {
 
 const mapStateToProps = (state) => ({
     query: state.events.query,
-    trend: state.events.trend
+    trend: state.events.trend,
+    isFetching: state.events.isFetching
 });
 
 const mapDispatchToProps = (dispatch) => ({

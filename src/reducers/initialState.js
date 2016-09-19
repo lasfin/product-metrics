@@ -3,6 +3,7 @@ export default {
         list: [],
         filtered: [],
         query: '',
-        trend: null
+        trend: null,
+        isFetching: true
     }
 }

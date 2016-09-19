@@ -13,8 +13,10 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin(); // temporary. will go away once the official React version is released
 const store = configureStore();
-store.dispatch(loadEventsSuccess(mockData));
 
+setTimeout(() => {
+    store.dispatch(loadEventsSuccess(mockData));
+}, 2000);
 
 ReactDOM.render(
     <MuiThemeProvider>

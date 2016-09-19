@@ -8,7 +8,8 @@ export default function eventsReducer(state = initialState.events, action) {
             return {
                 ...state,
                 list: newList,
-                filtered: newList
+                filtered: newList,
+                isFetching: false
             };
         case types.SEARCH_EVENTS:
             return {
