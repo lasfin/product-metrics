@@ -43,6 +43,9 @@ class EventsPage extends Component {
 }
 
 EventsPage.propTypes = {
+    query: PropTypes.string.isRequired,
+    trend: PropTypes.string.isRequired,
+    isFetching: PropTypes.bool.isRequired,
     onSearch: PropTypes.func.isRequired,
     onSelect: PropTypes.func.isRequired
 };
