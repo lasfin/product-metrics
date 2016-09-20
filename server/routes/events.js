@@ -66,11 +66,13 @@ let findEventsForLastDays = function(db, days, callback) {
         let dateToCompare = new Date(today.getFullYear(), today.getMonth(), today.getDate() - days);
 
         docs.map((doc) => {
-            doc.events.map((event, index, arr) => {
-                if (event.timestamp.getTime() < dateToCompare.getTime()) {
-                    arr.splice(index, 1);
+            let newArr = [];
+            doc.events.forEach((event) => {
+                if (event.timestamp.getTime() > dateToCompare.getTime()) {
+                    newArr.push(event);
                 }
-            })
+            });
+            doc.events = newArr;
         });
 
         callback(docs);
