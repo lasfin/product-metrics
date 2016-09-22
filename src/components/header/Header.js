@@ -7,8 +7,8 @@ const Header = () => {
     return (
         <div className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <Link to={'/'} className="menu-item">Events</Link>
-            <Link to={'/features'} className="menu-item">Features</Link>
+            <Link to={'events'} activeClassName="active" className="menu-item">Events</Link>
+            <Link to={'features'} activeClassName="active" className="menu-item">Features</Link>
         </div>
     );
 };

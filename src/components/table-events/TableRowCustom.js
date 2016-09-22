@@ -25,7 +25,7 @@ const TableRowCustom = ({event}) => {
             <TableRowColumn className="default_row">{event.name}</TableRowColumn>
             <TableRowColumn className="default_row">{event.label}</TableRowColumn>
             {event.count.map((counter, index) => { return <TableRowColumn key={index}>{counter}</TableRowColumn>})}
-            <TableRowColumn><Link to={'/details/' + event.id}>{trend}</Link></TableRowColumn>
+            <TableRowColumn><Link to={'/events/' + event.id}>{trend}</Link></TableRowColumn>
         </TableRow>
     )
 };
