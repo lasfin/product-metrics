@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
+import TableFeatures from '../components/table-features/TableFeatures';
+import AddEvent from '../components/add-event/AddEvent';
 
 const tabItemContainerStyle = {
     background: '#fff'
@@ -31,16 +33,10 @@ class FeaturesPage extends Component {
                   inkBarStyle={inkBarStyle}
             >
                 <Tab label="Features list" value="list" style={{color: '#000'}}>
-                    <div>
-                        <h2>Features list</h2>
-                        <p>F list</p>
-                    </div>
+                    <TableFeatures/>
                 </Tab>
                 <Tab label="Add feature" value="add" style={{color: '#000'}}>
-                    <div>
-                        <h2>Add feature</h2>
-                        <p>add</p>
-                    </div>
+                    <AddEvent/>
                 </Tab>
             </Tabs>
         );
