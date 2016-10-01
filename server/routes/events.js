@@ -62,9 +62,8 @@ let findAllEvents = function(db, callback) {
 
 let findEventsForLastDays = function(db, days, callback) {
     db.collection('events').find({}).toArray((err, docs) => {
-        let today = new Date();
-        let dateToCompare = new Date(today.getFullYear(), today.getMonth(), today.getDate() - days);
-
+        let today = new Date().toISOString();
+        let dateToCompare = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()));
         docs.map((doc) => {
             let newArr = [];
             doc.events.forEach((event) => {
@@ -82,14 +81,14 @@ let findEventsForLastDays = function(db, days, callback) {
 
 let createEvent = function(db, req, callback) {
     let today = new Date();
-    let date = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    let utcDate = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()));
 
     db.collection('events').insertOne({
         category: req.body.category || 'unknown',
         name: req.body.name || 'unknown',
         label: req.body.label || '',
         events: [{
-            timestamp: date,
+            timestamp: utcDate,
             count: 1
         }]
     }, (err, result) => {
@@ -113,11 +112,11 @@ let updateEvent = function(db, req, newEvents, callback) {
 
 let createNewEventsField = function(eventsArr) {
     let today = new Date();
-    let date = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    let utcDate = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()));
     let found = false;
 
     eventsArr.map((event) => {
-       if (event.timestamp.getTime() === date.getTime()) {
+       if (event.timestamp.getTime() === utcDate.getTime()) {
            event.count += 1;
            found = true;
        }
@@ -125,7 +124,7 @@ let createNewEventsField = function(eventsArr) {
 
     if (!found) {
         eventsArr.push({
-            timestamp: date,
+            timestamp: utcDate,
             count: 1
         })
     }
