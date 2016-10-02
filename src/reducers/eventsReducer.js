@@ -3,6 +3,11 @@ import * as types from '../actions/actionTypes';
 
 export default function eventsReducer(state = initialState.events, action) {
     switch (action.type) {
+        case types.REQUEST_EVENTS:
+            return {
+                ...state,
+                isFetching: true
+            };
         case types.LOAD_EVENTS_SUCCESS:
             var newList = action.list.map(extendByTrendAndWarning);
             return {
