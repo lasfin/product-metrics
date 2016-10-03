@@ -1,5 +1,11 @@
 import * as types from './actionTypes';
 
+export function fetchEvents() {
+    return {
+        type: types.REQUEST_EVENTS
+    }
+}
+
 export function loadEventsSuccess(data) {
     return {
         type: types.LOAD_EVENTS_SUCCESS,
