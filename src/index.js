@@ -6,17 +6,15 @@ import configureStore from './store/configureStore';
 import routes from './routes';
 import './index.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {loadEventsSuccess} from './actions/eventsActions';
-import mockData from './mock-data';
+import {fetchEvents} from './actions/eventsActions';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 
 injectTapEventPlugin(); // temporary. will go away once the official React version is released
 const store = configureStore();
 
-setTimeout(() => {
-    store.dispatch(loadEventsSuccess(mockData));
-}, 2000);
+store.dispatch(fetchEvents());
+
 
 ReactDOM.render(
     <MuiThemeProvider>

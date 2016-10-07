@@ -21,11 +21,11 @@ const TableRowCustom = ({event}) => {
     }
 
     return (
-        <TableRow key={event.id} className={event.warning ? 'warning': ''}>
+        <TableRow key={event._id} className={event.warning ? 'warning': ''}>
             <TableRowColumn className="default_row">{event.name}</TableRowColumn>
             <TableRowColumn className="default_row">{event.label}</TableRowColumn>
             {event.count.map((counter, index) => { return <TableRowColumn key={index}>{counter}</TableRowColumn>})}
-            <TableRowColumn><Link to={'/events/' + event.id}>{trend}</Link></TableRowColumn>
+            <TableRowColumn><Link to={'/events/' + event._id}>{trend}</Link></TableRowColumn>
         </TableRow>
     )
 };

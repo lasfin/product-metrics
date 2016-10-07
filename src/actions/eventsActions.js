@@ -1,9 +1,20 @@
 import * as types from './actionTypes';
+import fetch from 'isomorphic-fetch';
 
-export function fetchEvents() {
+
+export function requestEvents() {
     return {
         type: types.REQUEST_EVENTS
     }
+}
+
+export function fetchEvents() {
+    return function (dispatch) {
+        dispatch(requestEvents());
+        return fetch(`http://localhost:5000/events/?days=14`)
+            .then(response => response.json())
+            .then(response => dispatch(loadEventsSuccess(response)))
+    };
 }
 
 export function loadEventsSuccess(data) {

@@ -17,7 +17,7 @@ const TableEvents = ({events}) => {
             </TableHeader>
             <TableBody displayRowCheckbox={false} showRowHover={true}>
                 {events.map(event =>
-                    <TableRowCustom event={event} key={event.id}/>
+                    <TableRowCustom event={event} key={event._id}/>
                 )}
             </TableBody>
         </Table>
