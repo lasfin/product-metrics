@@ -20,9 +20,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.all('/*', (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
+
 app.use('/', indexPage);
 app.use('/events/', events);
 app.use('/features/', features);
+
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

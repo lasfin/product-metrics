@@ -62,7 +62,7 @@ let findAllEvents = function(db, callback) {
 
 let findEventsForLastDays = function(db, days, callback) {
     db.collection('events').find({}).toArray((err, docs) => {
-        let today = new Date().toISOString();
+        let today = new Date();
         let dateToCompare = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()));
         docs.map((doc) => {
             let newArr = [];
