@@ -45,9 +45,8 @@ function prepareDataAfterFetch(data) {
 
     data.events.map((document) => {
         document.count = [];
-        for (let i = 0; i < days; i++) {
-            let date = new Date(today.getFullYear(), today.getMonth(), today.getDate() - days + i); // from first to today
-
+        for (let i = 0; i <= days; i++) {
+            let date = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate() - days + i)); // from first to today
             var existedEvent = document.events.find((event) => {
                 return new Date(event.timestamp).getTime() === date.getTime();
             });
