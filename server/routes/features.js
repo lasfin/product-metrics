@@ -19,6 +19,13 @@ router.get('/', (req, res, next) => {
 
 let findAllFeatures = function(db, callback) {
     db.collection('features').find({}).toArray((err, docs) => {
+        docs.push({
+                "timestamp": "2016-10-07T00:00:00.000Z",
+                "name": 'Feature one'
+            }, {
+                "timestamp": "2016-10-08T00:00:00.000Z",
+                "name": 'Feature two'
+            });
         callback(docs);
     });
 };
