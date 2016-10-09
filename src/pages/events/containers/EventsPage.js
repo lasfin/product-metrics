@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import SearchBar from  '../components/search-bar/SearchBar';
 import SelectTrend from '../components/select-trend/SelectTrend';
 import FilteredEvents from './FilteredEvents';
-import {searchEvents, filterByTrend} from '../actions/eventsActions';
+import {searchEvents, filterByTrend} from '../../../actions/eventsActions';
 import {connect} from 'react-redux';
 import CircularProgress from 'material-ui/CircularProgress';
 import './eventsPage.css';

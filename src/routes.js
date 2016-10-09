@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import EventsPage from './containers/EventsPage';
-import EventPage  from './containers/EventPage';
-import FeaturesPage from './containers/FeaturesPage';
-import App from './components/App';
+import EventsPage from './pages/events/containers/EventsPage';
+import EventPage  from './pages/events/containers/EventPage';
+import FeaturesPage from './pages/features/containers/FeaturesPage';
+import App from './pages/common/components/App';
 
 export default (
     <Route path="/" component={App}>
