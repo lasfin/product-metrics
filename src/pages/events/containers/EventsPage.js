@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import SearchBar from  '../components/search-bar/SearchBar';
 import SelectTrend from '../components/select-trend/SelectTrend';
 import FilteredEvents from './FilteredEvents';
-import {searchEvents, filterByTrend} from '../../../actions/eventsActions';
+import {searchEvents, filterByTrend, fetchEvents} from '../../../actions/eventsActions';
 import {connect} from 'react-redux';
 import CircularProgress from 'material-ui/CircularProgress';
 import './eventsPage.css';
@@ -21,6 +21,16 @@ class EventsPage extends Component {
 
     onSelect(value) {
         this.props.onSelect(value);
+    }
+
+    fetchData() {
+        if (!this.props.list.length) {
+            this.props.fetchData();
+        }
+    }
+
+    componentDidMount() {
+        this.fetchData();
     }
 
     render() {
@@ -46,6 +56,7 @@ EventsPage.propTypes = {
     query: PropTypes.string.isRequired,
     trend: PropTypes.string.isRequired,
     isFetching: PropTypes.bool.isRequired,
+    list: PropTypes.array.isRequired,
     onSearch: PropTypes.func.isRequired,
     onSelect: PropTypes.func.isRequired
 };
@@ -53,12 +64,14 @@ EventsPage.propTypes = {
 const mapStateToProps = (state) => ({
     query: state.events.query,
     trend: state.events.trend,
-    isFetching: state.events.isFetching
+    isFetching: state.events.isFetching,
+    list: state.events.list
 });
 
 const mapDispatchToProps = (dispatch) => ({
     onSearch: (query) => { dispatch(searchEvents(query)) },
-    onSelect: (value) => { dispatch(filterByTrend(value)) }
+    onSelect: (value) => { dispatch(filterByTrend(value)) },
+    fetchData: () => { dispatch(fetchEvents()) }
 });
 
 
