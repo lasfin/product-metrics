@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 import fetch from 'isomorphic-fetch';
-
+import config from '../config';
 
 export function requestEvents() {
     return {
@@ -8,10 +8,10 @@ export function requestEvents() {
     }
 }
 
-export function fetchEvents() {
+export function fetchEvents(days) {
     return function (dispatch) {
         dispatch(requestEvents());
-        return fetch(`http://localhost:5000/events/?days=14`)
+        return fetch(`${config.apiLocal.events}?days=14`)
             .then(response => response.json())
             .then(response => dispatch(loadEventsSuccess(response)))
     };

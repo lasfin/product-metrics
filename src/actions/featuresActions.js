@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 import fetch from 'isomorphic-fetch';
-
+import config from '../config';
 
 export function requestFeatures() {
     return {
@@ -11,7 +11,7 @@ export function requestFeatures() {
 export function fetchFeatures() {
     return function (dispatch) {
         dispatch(requestFeatures());
-        return fetch(`http://localhost:5000/features/`)
+        return fetch(config.apiLocal.features)
             .then(response => response.json())
             .then(response => dispatch(loadFeaturesSuccess(response)))
     };

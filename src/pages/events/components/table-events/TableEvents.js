@@ -7,7 +7,7 @@ const TableEvents = ({events}) => {
         <Table selectable={false}>
             <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                 <TableRow>
-                    <TableHeaderColumn style={{width: '80px'}} tooltip="Event name">Event name</TableHeaderColumn>
+                    <TableHeaderColumn style={{width: '80px'}} tooltip="Event name">Name</TableHeaderColumn>
                     <TableHeaderColumn style={{width: '80px'}} tooltip="Label">Label</TableHeaderColumn>
                     {new Array(14).fill(0).map((counter, index) => {
                         return <TableRowColumn key={index}></TableRowColumn>

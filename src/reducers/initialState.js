@@ -5,5 +5,9 @@ export default {
         query: '',
         trend: 'all',
         isFetching: true
+    },
+    features: {
+        list: [],
+        isFetching: true
     }
 }

@@ -71,7 +71,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     onSearch: (query) => { dispatch(searchEvents(query)) },
     onSelect: (value) => { dispatch(filterByTrend(value)) },
-    fetchData: () => { dispatch(fetchEvents()) }
+    fetchData: (days=14) => { dispatch(fetchEvents(days)) }
 });
 
 

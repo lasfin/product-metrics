@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import TableFeatures from '../components/table-features/TableFeatures';
 import AddEvent from '../components/add-event/AddEvent';
+import {fetchFeatures} from '../../../actions/featuresActions';
+import {connect} from 'react-redux';
 
 const tabItemContainerStyle = {
     background: '#fff'
@@ -25,6 +27,14 @@ class FeaturesPage extends Component {
         });
     };
 
+    fetchFeatures() {
+        this.props.fetch();
+    }
+
+    componentDidMount() {
+        this.fetchFeatures();
+    }
+
     render() {
         return (
             <Tabs value={this.state.value}
@@ -33,7 +43,10 @@ class FeaturesPage extends Component {
                   inkBarStyle={inkBarStyle}
             >
                 <Tab label="Features list" value="list" style={{color: '#000'}}>
-                    <TableFeatures/>
+                    <TableFeatures
+                        features={this.props.features}
+                        isFetching={this.props.isFetching}
+                    />
                 </Tab>
                 <Tab label="Add feature" value="add" style={{color: '#000'}}>
                     <AddEvent/>
@@ -43,7 +56,21 @@ class FeaturesPage extends Component {
     }
 }
 
-export default FeaturesPage;
+FeaturesPage.propTypes = {
+    features: PropTypes.array.isRequired,
+    isFetching: PropTypes.bool.isRequired
+};
+
+const mapStateToProps = (state) => ({
+    features: state.features.list,
+    isFetching: state.features.isFetching
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    fetch: () => { dispatch(fetchFeatures()) }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FeaturesPage);
 
 
 
