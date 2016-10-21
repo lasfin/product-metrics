@@ -12,3 +12,8 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
+.center-block {
+    margin: 75px;
+    text-align: center;
+}

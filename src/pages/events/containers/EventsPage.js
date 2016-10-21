@@ -5,7 +5,6 @@ import FilteredEvents from './FilteredEvents';
 import {searchEvents, filterByTrend, fetchEvents} from '../../../actions/eventsActions';
 import {connect} from 'react-redux';
 import CircularProgress from 'material-ui/CircularProgress';
-import './eventsPage.css';
 
 
 class EventsPage extends Component {

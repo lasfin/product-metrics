@@ -3,6 +3,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import TableFeatures from '../components/table-features/TableFeatures';
 import AddEvent from '../components/add-event/AddEvent';
 import {fetchFeatures} from '../../../actions/featuresActions';
+import CircularProgress from 'material-ui/CircularProgress';
 import {connect} from 'react-redux';
 
 const tabItemContainerStyle = {
@@ -23,7 +24,7 @@ class FeaturesPage extends Component {
 
     handleChange = (value) => {
         this.setState({
-            value: value,
+            value
         });
     };
 
@@ -32,7 +33,9 @@ class FeaturesPage extends Component {
     }
 
     componentDidMount() {
-        this.fetchFeatures();
+        if (!this.props.features.length) {
+            this.fetchFeatures();
+        }
     }
 
     render() {
@@ -43,10 +46,13 @@ class FeaturesPage extends Component {
                   inkBarStyle={inkBarStyle}
             >
                 <Tab label="Features list" value="list" style={{color: '#000'}}>
-                    <TableFeatures
-                        features={this.props.features}
-                        isFetching={this.props.isFetching}
-                    />
+                    { !this.props.isFetching ?
+                        <TableFeatures features={this.props.features}/>
+                        :
+                        <div className="center-block">
+                            <CircularProgress size={119}  thickness={3}/>
+                        </div>
+                    }
                 </Tab>
                 <Tab label="Add feature" value="add" style={{color: '#000'}}>
                     <AddEvent/>
