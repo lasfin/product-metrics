@@ -23,3 +23,10 @@ export function loadFeaturesSuccess(data) {
         data
     };
 }
+
+export function searchFeatures(query) {
+    return {
+        type: types.SEARCH_FEATURES,
+        query: query.trim()
+    }
+}

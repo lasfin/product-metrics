@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
-import TableFeatures from '../components/table-features/TableFeatures';
 import AddEvent from '../components/add-event/AddEvent';
-import {fetchFeatures} from '../../../actions/featuresActions';
+import {fetchFeatures, searchFeatures} from '../../../actions/featuresActions';
 import CircularProgress from 'material-ui/CircularProgress';
 import {connect} from 'react-redux';
+import SearchFeatures from '../components/search-features/SeacrhFeatures';
+import FilteredFeatures from './FilteredFeatures';
 
 const tabItemContainerStyle = {
     background: '#fff'
@@ -20,6 +21,7 @@ class FeaturesPage extends Component {
         this.state = {
             value: 'list',
         };
+        this.onSearch = this.onSearch.bind(this);
     }
 
     handleChange = (value) => {
@@ -27,6 +29,10 @@ class FeaturesPage extends Component {
             value
         });
     };
+
+    onSearch(events, inputValue) {
+        this.props.onSearch(inputValue);
+    }
 
     fetchFeatures() {
         this.props.fetch();
@@ -47,7 +53,10 @@ class FeaturesPage extends Component {
             >
                 <Tab label="Features list" value="list" style={{color: '#000'}}>
                     { !this.props.isFetching ?
-                        <TableFeatures features={this.props.features}/>
+                        <div>
+                            <SearchFeatures onChange={this.onSearch} query={this.props.query}/>
+                            <FilteredFeatures features={this.props.features}/>
+                        </div>
                         :
                         <div className="center-block">
                             <CircularProgress size={119}  thickness={3}/>
@@ -63,16 +72,21 @@ class FeaturesPage extends Component {
 }
 
 FeaturesPage.propTypes = {
+    query: PropTypes.string.isRequired,
     features: PropTypes.array.isRequired,
-    isFetching: PropTypes.bool.isRequired
+    isFetching: PropTypes.bool.isRequired,
+    onSearch: PropTypes.func.isRequired,
+    fetch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
     features: state.features.list,
-    isFetching: state.features.isFetching
+    isFetching: state.features.isFetching,
+    query: state.features.query
 });
 
 const mapDispatchToProps = (dispatch) => ({
+    onSearch: (query) => { dispatch(searchFeatures(query)) },
     fetch: () => { dispatch(fetchFeatures()) }
 });
 

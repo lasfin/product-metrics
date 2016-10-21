@@ -8,6 +8,7 @@ export default {
     },
     features: {
         list: [],
-        isFetching: true
+        isFetching: true,
+        query: ''
     }
 }

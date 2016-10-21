@@ -11,7 +11,7 @@ export function requestEvents() {
 export function fetchEvents(days) {
     return function (dispatch) {
         dispatch(requestEvents());
-        return fetch(`${config.apiLocal.events}?days=14`)
+        return fetch(`${config.apiLocal.events}?days=${days}`)
             .then(response => response.json())
             .then(response => dispatch(loadEventsSuccess(response)))
     };

@@ -7,6 +7,6 @@ const mapStateToProps = (state) => {
     }
 };
 
-const VisibleEvents = connect(mapStateToProps)(TableEvents);
+const FilteredEvents = connect(mapStateToProps)(TableEvents);
 
-export default VisibleEvents;
+export default FilteredEvents;
