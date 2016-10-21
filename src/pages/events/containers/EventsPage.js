@@ -44,7 +44,7 @@ class EventsPage extends Component {
                 </div>
             :
                 <div className="center-block">
-                    <CircularProgress size={2} />
+                    <CircularProgress size={119}  thickness={3} />
                 </div>
             }
             </div>
